@@ -785,17 +785,40 @@ body {
     height: 360px;
   }
 
+  .nav-dropdown:hover .nav-sub,
   .nav-sub {
+    display: block;
     position: static;
     transform: none;
     box-shadow: none;
     background: transparent;
     padding: 0;
+    min-width: 0;
+  }
+
+  .nav-sub li {
+    padding: 0;
   }
 
   .nav-sub li a {
     font-size: 0.8rem;
-    padding: 8px 20px;
+    padding: 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    display: inline-block;
+  }
+
+  .nav-sub li a:hover {
+    background: transparent;
+  }
+
+  .nav-dropdown > a {
+    margin-bottom: 0;
+  }
+
+  .nav-links li {
+    padding: 8px 0;
   }
 
   .about-with-photo {
