@@ -1,0 +1,82 @@
+{
+  "site": {
+    "name": "Soodi Arts",
+    "tagline": "Embrace Creativity with Soodi Arts",
+    "heroTitle": "Journey through My Artistry",
+    "heroQuote": "With every painting, add a beautiful story to your walls.",
+    "newsletter": {
+      "title": "Join My Artistic Email Circle!",
+      "description": "Be the first to experience my monthly masterpieces and stay informed about events I partake in."
+    },
+    "instagram": "https://www.instagram.com/soodi.studio/"
+  },
+  "artworks": [
+    {
+      "id": "steam-clock-at-night",
+      "title": "Steam Clock at Night",
+      "medium": "Acrylic painting on gallery warped canvas",
+      "dimensions": "18\" x 20\"",
+      "price": "$500.00 CAD",
+      "originalPrice": "$600.00 CAD",
+      "images": [
+        "images/products/steam-clock/steam-clock-1.jpg",
+        "images/products/steam-clock/steam-clock-2.jpg"
+      ]
+    },
+    {
+      "id": "woman-life-freedom",
+      "title": "Woman Life Freedom",
+      "medium": "Acrylic painting on gallery style canvas",
+      "dimensions": "18\" x 24\"",
+      "price": "$500.00 CAD",
+      "originalPrice": "$600.00 CAD",
+      "images": [
+        "images/products/woman-life-freedom/woman-life-freedom-1.jpg",
+        "images/products/woman-life-freedom/woman-life-freedom-2.jpg"
+      ]
+    },
+    {
+      "id": "girl-born-from-flowers",
+      "title": "Emergence of Elegance: A Girl Born from Flowers",
+      "medium": "Acrylic on canvas board",
+      "dimensions": "12\" x 15\"",
+      "frame": "Included",
+      "price": "$130.00 CAD",
+      "originalPrice": "$150.00 CAD",
+      "description": "Elevate your space with the enchanting allure of \"A Girl Born from Flowers,\" a captivating original acrylic painting that embodies the mystical union of nature and humanity. Each stroke on the 12\" x 15\" canvas board brings to life the vibrant essence of florals and the feminine grace, artfully framed to preserve and enhance its visual impact.\n\nThis piece depicts a silhouette of a young woman veiled by a lavish bouquet of peonies, her identity intimately intertwined with the petals' lush beauty. The vivid pinks and purples of the flowers burst against the subdued background, suggesting a figure emerging from the blossoms themselves. The artist's use of texture and contrasting colors captures a moment of serene introspection, with dynamic splashes of pink lines that suggest movement and vitality.",
+      "images": [
+        "images/products/girl-born-flowers/girl-flowers-1.jpg",
+        "images/products/girl-born-flowers/girl-flowers-2.jpg",
+        "images/products/girl-born-flowers/girl-flowers-3.jpg"
+      ]
+    },
+    {
+      "id": "blue-jay-on-the-box",
+      "title": "Blue Jay on the Box",
+      "medium": "Painted wooden box",
+      "dimensions": "9\" x 5.5\" x 3\"",
+      "price": "$45.00 CAD",
+      "originalPrice": "$50.00 CAD",
+      "images": [
+        "images/products/blue-jay-box/blue-jay-1.jpg",
+        "images/products/blue-jay-box/blue-jay-2.jpg",
+        "images/products/blue-jay-box/blue-jay-3.jpg",
+        "images/products/blue-jay-box/blue-jay-4.jpg"
+      ]
+    },
+    {
+      "id": "flower-box",
+      "title": "Flower Box",
+      "medium": "Painted wooden box with flower painting",
+      "dimensions": "7\" x 7\" x 3.5\"",
+      "price": "$55.00 CAD",
+      "originalPrice": "$70.00 CAD",
+      "images": [
+        "images/products/flower-box/flower-box-1.jpg",
+        "images/products/flower-box/flower-box-2.jpg",
+        "images/products/flower-box/flower-box-3.jpg",
+        "images/products/flower-box/flower-box-4.jpg"
+      ]
+    }
+  ]
+}
