@@ -11,10 +11,14 @@
 
 :root {
   --color-bg: #faf9f7;
+  --color-warm-bg: #f5f0ea;
   --color-text: #2c2c2c;
   --color-text-light: #6b6b6b;
-  --color-accent: #8b7355;
-  --color-accent-light: #c4a97d;
+  --color-accent: #c0624a;
+  --color-accent-light: #d4856e;
+  --color-accent-gold: #c4a97d;
+  --color-teal: #4a8c82;
+  --color-plum: #8b5c7a;
   --color-white: #ffffff;
   --color-dark: #1a1a1a;
   --font-display: 'Playfair Display', Georgia, serif;
@@ -250,83 +254,221 @@ a {
 }
 
 /* ==================
-   Portfolio Gallery
+   Paint Canvas (background particles)
    ================== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 32px;
-}
-
-.artwork-card {
-  cursor: pointer;
-  transition: transform var(--transition);
-}
-
-.artwork-card:hover {
-  transform: translateY(-4px);
-}
-
-.artwork-image {
-  position: relative;
-  overflow: hidden;
-  background: #e8e6e3;
-  border-radius: 6px;
-}
-
-.artwork-image img {
+#paintCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.artwork-card:hover .artwork-image img {
-  transform: scale(1.05);
-}
-
-.artwork-info {
-  padding: 20px 4px;
-}
-
-.artwork-info h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--color-text);
-}
-
-.artwork-medium {
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  margin-bottom: 2px;
-}
-
-.artwork-dimensions {
-  font-size: 0.8rem;
-  color: var(--color-accent);
-  font-weight: 500;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
 
 /* ==================
-   Gallery Banner
+   Nav Dropdown
    ================== */
-.gallery-banner {
-  padding: 0;
-  overflow: hidden;
+.nav-dropdown {
+  position: relative;
 }
 
-.gallery-banner-images {
+.nav-sub {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 8px 0;
+  min-width: 160px;
+  list-style: none;
+  z-index: 200;
+}
+
+.nav-dropdown:hover .nav-sub {
+  display: block;
+}
+
+.nav-sub li a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  transition: background 0.2s;
+}
+
+.nav-sub li a:hover {
+  background: var(--color-warm-bg);
+  color: var(--color-accent);
+}
+
+/* ==================
+   Hero Enhancements
+   ================== */
+.hero-eyebrow {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.btn-hero {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+  padding: 16px 40px;
+  font-size: 0.95rem;
+}
+
+.btn-hero:hover {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+}
+
+/* ==================
+   Portfolio Showcase
+   ================== */
+.portfolio-showcase {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 32px;
+  margin-top: 16px;
 }
 
-.gallery-banner-images img {
+.showcase-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 480px;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.showcase-images {
+  position: absolute;
+  inset: 0;
+}
+
+.showcase-img {
+  position: absolute;
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
+  transition: opacity 1.5s ease;
+}
+
+.showcase-img-2,
+.showcase-img-3 {
+  opacity: 0;
+}
+
+.showcase-card:hover .showcase-img-1 { opacity: 0; }
+.showcase-card:hover .showcase-img-2 { opacity: 1; }
+
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 26, 0.85) 0%,
+    rgba(26, 26, 26, 0.2) 50%,
+    transparent 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.showcase-card:hover .showcase-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 26, 0.9) 0%,
+    rgba(26, 26, 26, 0.3) 60%,
+    transparent 100%
+  );
+}
+
+.showcase-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  color: var(--color-white);
+  z-index: 1;
+}
+
+.showcase-count {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--color-accent);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.showcase-content h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.showcase-content p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.showcase-cta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  color: var(--color-accent-gold);
+}
+
+.showcase-card:hover .showcase-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================
+   Paint Divider
+   ================== */
+.paint-divider {
+  margin-top: -2px;
+  line-height: 0;
+}
+
+.paint-divider svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+/* ==================
+   About warm background
+   ================== */
+.about {
+  background: var(--color-warm-bg);
 }
 
 /* ==================
@@ -626,17 +768,25 @@ a {
     padding: 12px 0;
   }
 
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .gallery-banner-images {
+  .portfolio-showcase {
     grid-template-columns: 1fr;
   }
 
-  .gallery-banner-images img {
-    height: 280px;
+  .showcase-card {
+    height: 360px;
+  }
+
+  .nav-sub {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .nav-sub li a {
+    font-size: 0.8rem;
+    padding: 8px 20px;
   }
 
   .about-with-photo {
@@ -676,11 +826,19 @@ a {
 }
 
 @media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-
   .hero-content h1 {
     font-size: 2rem;
+  }
+
+  .showcase-card {
+    height: 300px;
+  }
+
+  .showcase-content {
+    padding: 24px;
+  }
+
+  .showcase-content h3 {
+    font-size: 1.5rem;
   }
 }

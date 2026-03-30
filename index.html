@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soodi Arts - Exquisite Hand-Painted Acrylic Artworks</title>
-  <meta name="description" content="Embrace Creativity with Soodi Arts. Original hand-painted acrylic artworks and crafted boxes by Soodi.">
+  <meta name="description" content="Embrace Creativity with Soodi Arts. Original hand-painted acrylic artworks, cushions, and crafted pieces by Soodabeh.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Paint particle canvas -->
+  <canvas id="paintCanvas"></canvas>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
@@ -22,9 +25,13 @@
       </button>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="paintings.html">Paintings</a></li>
-        <li><a href="cushions.html">Cushions</a></li>
+        <li class="nav-dropdown">
+          <a href="#portfolio">Portfolio</a>
+          <ul class="nav-sub">
+            <li><a href="paintings.html">Paintings</a></li>
+            <li><a href="cushions.html">Cushions</a></li>
+          </ul>
+        </li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -38,9 +45,10 @@
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
-      <h1>Journey through My Artistry</h1>
+      <p class="hero-eyebrow">Welcome to</p>
+      <h1>Soodi Arts</h1>
       <p class="hero-subtitle">With every painting, add a beautiful story to your walls.</p>
-      <a href="#portfolio" class="btn">View Portfolio</a>
+      <a href="#portfolio" class="btn btn-hero">Explore My Work</a>
     </div>
   </section>
 
@@ -48,81 +56,50 @@
   <section class="section portfolio" id="portfolio">
     <div class="container">
       <h2 class="section-title">Portfolio</h2>
-      <p class="section-subtitle">Original hand-painted acrylic artworks and crafted boxes</p>
+      <p class="section-subtitle">Explore my collections</p>
 
-      <div class="gallery">
+      <div class="portfolio-showcase">
+        <!-- Paintings Card -->
+        <a href="paintings.html" class="showcase-card">
+          <div class="showcase-images">
+            <img src="images/paintings/2023-09-25_woman-bare-back-flowers.jpg" alt="" class="showcase-img showcase-img-1">
+            <img src="images/paintings/2022-10-02_dancer-castle-orange.jpg" alt="" class="showcase-img showcase-img-2">
+            <img src="images/paintings/2021-10-22_orange-fox-sitting.jpg" alt="" class="showcase-img showcase-img-3">
+          </div>
+          <div class="showcase-overlay"></div>
+          <div class="showcase-content">
+            <span class="showcase-count">115 works</span>
+            <h3>Paintings</h3>
+            <p>Acrylic on canvas &mdash; portraits, cityscapes, florals, and more</p>
+            <span class="showcase-cta">View Gallery &rarr;</span>
+          </div>
+        </a>
 
-        <!-- Steam Clock at Night -->
-        <div class="artwork-card" data-artwork="steam-clock-at-night">
-          <div class="artwork-image">
-            <img src="images/products/steam-clock/steam-clock-1.jpg" alt="Steam Clock at Night" loading="lazy">
+        <!-- Cushions Card -->
+        <a href="cushions.html" class="showcase-card">
+          <div class="showcase-images">
+            <img src="images/cushions/2025-09-27_birds-autumn-leaves-pillow.jpg" alt="" class="showcase-img showcase-img-1">
+            <img src="images/cushions/2021-03-08_pomegranate-bird-pillow.jpg" alt="" class="showcase-img showcase-img-2">
+            <img src="images/cushions/2021-03-08_red-cat-pillow.jpg" alt="" class="showcase-img showcase-img-3">
           </div>
-          <div class="artwork-info">
-            <h3>Steam Clock at Night</h3>
-            <p class="artwork-medium">Acrylic on gallery warped canvas</p>
-            <p class="artwork-dimensions">18" x 20"</p>
+          <div class="showcase-overlay"></div>
+          <div class="showcase-content">
+            <span class="showcase-count">12 designs</span>
+            <h3>Art Cushions</h3>
+            <p>Hand-painted designs on premium decorative cushions</p>
+            <span class="showcase-cta">View Collection &rarr;</span>
           </div>
-        </div>
-
-        <!-- Woman Life Freedom -->
-        <div class="artwork-card" data-artwork="woman-life-freedom">
-          <div class="artwork-image">
-            <img src="images/products/woman-life-freedom/woman-life-freedom-1.jpg" alt="Woman Life Freedom" loading="lazy">
-          </div>
-          <div class="artwork-info">
-            <h3>Woman Life Freedom</h3>
-            <p class="artwork-medium">Acrylic on gallery style canvas</p>
-            <p class="artwork-dimensions">18" x 24"</p>
-          </div>
-        </div>
-
-        <!-- A Girl Born from Flowers -->
-        <div class="artwork-card" data-artwork="girl-born-from-flowers">
-          <div class="artwork-image">
-            <img src="images/products/girl-born-flowers/girl-flowers-1.jpg" alt="Emergence of Elegance: A Girl Born from Flowers" loading="lazy">
-          </div>
-          <div class="artwork-info">
-            <h3>Emergence of Elegance: A Girl Born from Flowers</h3>
-            <p class="artwork-medium">Acrylic on canvas board, framed</p>
-            <p class="artwork-dimensions">12" x 15"</p>
-          </div>
-        </div>
-
-        <!-- Blue Jay on the Box -->
-        <div class="artwork-card" data-artwork="blue-jay-on-the-box">
-          <div class="artwork-image">
-            <img src="images/products/blue-jay-box/blue-jay-1.jpg" alt="Blue Jay on the Box" loading="lazy">
-          </div>
-          <div class="artwork-info">
-            <h3>Blue Jay on the Box</h3>
-            <p class="artwork-medium">Painted wooden box</p>
-            <p class="artwork-dimensions">9" x 5.5" x 3"</p>
-          </div>
-        </div>
-
-        <!-- Flower Box -->
-        <div class="artwork-card" data-artwork="flower-box">
-          <div class="artwork-image">
-            <img src="images/products/flower-box/flower-box-1.jpg" alt="Flower Box" loading="lazy">
-          </div>
-          <div class="artwork-info">
-            <h3>Flower Box</h3>
-            <p class="artwork-medium">Painted wooden box with flower painting</p>
-            <p class="artwork-dimensions">7" x 7" x 3.5"</p>
-          </div>
-        </div>
-
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Banner -->
-  <section class="gallery-banner">
-    <div class="gallery-banner-images">
-      <img src="images/gallery/gallery-1.jpg" alt="Soodi Arts gallery" loading="lazy">
-      <img src="images/gallery/gallery-2.jpg" alt="Soodi Arts gallery" loading="lazy">
-    </div>
-  </section>
+  <!-- Color divider -->
+  <div class="paint-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="var(--color-warm-bg)"/>
+    </svg>
+  </div>
 
   <!-- About Section -->
   <section class="section about" id="about">
@@ -190,18 +167,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
-    <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
-    <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
-    <div class="lightbox-content">
-      <img src="" alt="" id="lightbox-img">
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-    <div class="lightbox-thumbnails" id="lightbox-thumbnails"></div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer">

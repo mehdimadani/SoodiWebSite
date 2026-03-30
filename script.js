@@ -1,54 +1,60 @@
-// Artwork data for lightbox
-const artworks = {
-  'steam-clock-at-night': {
-    title: 'Steam Clock at Night',
-    images: [
-      'images/products/steam-clock/steam-clock-1.jpg',
-      'images/products/steam-clock/steam-clock-2.jpg'
-    ]
-  },
-  'woman-life-freedom': {
-    title: 'Woman Life Freedom',
-    images: [
-      'images/products/woman-life-freedom/woman-life-freedom-1.jpg',
-      'images/products/woman-life-freedom/woman-life-freedom-2.jpg'
-    ]
-  },
-  'girl-born-from-flowers': {
-    title: 'Emergence of Elegance: A Girl Born from Flowers',
-    images: [
-      'images/products/girl-born-flowers/girl-flowers-1.jpg',
-      'images/products/girl-born-flowers/girl-flowers-2.jpg',
-      'images/products/girl-born-flowers/girl-flowers-3.jpg'
-    ]
-  },
-  'blue-jay-on-the-box': {
-    title: 'Blue Jay on the Box',
-    images: [
-      'images/products/blue-jay-box/blue-jay-1.jpg',
-      'images/products/blue-jay-box/blue-jay-2.jpg',
-      'images/products/blue-jay-box/blue-jay-3.jpg',
-      'images/products/blue-jay-box/blue-jay-4.jpg'
-    ]
-  },
-  'flower-box': {
-    title: 'Flower Box',
-    images: [
-      'images/products/flower-box/flower-box-1.jpg',
-      'images/products/flower-box/flower-box-2.jpg',
-      'images/products/flower-box/flower-box-3.jpg',
-      'images/products/flower-box/flower-box-4.jpg'
-    ]
-  }
-};
+// ==================
+// Paint Particle Background
+// ==================
+const canvas = document.getElementById('paintCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  const particles = [];
+  const colors = ['#c0624a', '#c4a97d', '#4a8c82', '#8b5c7a', '#d4856e', '#e8c170'];
 
-// Navigation scroll effect
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  for (let i = 0; i < 35; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 4 + 1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.3 + 0.1
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+}
+
+// ==================
+// Navigation
+// ==================
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Mobile menu toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -57,7 +63,6 @@ navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('active');
 });
 
-// Close mobile menu on link click
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('open');
@@ -65,84 +70,25 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Lightbox
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const lightboxThumbnails = document.getElementById('lightbox-thumbnails');
-let currentArtwork = null;
-let currentIndex = 0;
+// ==================
+// Showcase Image Cycling
+// ==================
+document.querySelectorAll('.showcase-card').forEach(card => {
+  const imgs = card.querySelectorAll('.showcase-img');
+  if (imgs.length < 2) return;
 
-function openLightbox(artworkId) {
-  currentArtwork = artworks[artworkId];
-  currentIndex = 0;
-  updateLightbox();
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function updateLightbox() {
-  if (!currentArtwork) return;
-  lightboxImg.src = currentArtwork.images[currentIndex];
-  lightboxImg.alt = currentArtwork.title;
-  lightboxCaption.textContent = currentArtwork.title;
-
-  // Update thumbnails
-  lightboxThumbnails.innerHTML = '';
-  currentArtwork.images.forEach((src, i) => {
-    const thumb = document.createElement('img');
-    thumb.src = src;
-    thumb.alt = `View ${i + 1}`;
-    thumb.classList.toggle('active', i === currentIndex);
-    thumb.addEventListener('click', () => {
-      currentIndex = i;
-      updateLightbox();
-    });
-    lightboxThumbnails.appendChild(thumb);
-  });
-}
-
-function closeLightbox() {
-  lightbox.classList.remove('active');
-  document.body.style.overflow = '';
-  currentArtwork = null;
-}
-
-document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-document.querySelector('.lightbox-prev').addEventListener('click', () => {
-  if (!currentArtwork) return;
-  currentIndex = (currentIndex - 1 + currentArtwork.images.length) % currentArtwork.images.length;
-  updateLightbox();
-});
-document.querySelector('.lightbox-next').addEventListener('click', () => {
-  if (!currentArtwork) return;
-  currentIndex = (currentIndex + 1) % currentArtwork.images.length;
-  updateLightbox();
+  let current = 0;
+  setInterval(() => {
+    imgs[current].style.opacity = '0';
+    current = (current + 1) % imgs.length;
+    imgs[current].style.opacity = '1';
+  }, 3000);
 });
 
-// Close lightbox on backdrop click
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') document.querySelector('.lightbox-prev').click();
-  if (e.key === 'ArrowRight') document.querySelector('.lightbox-next').click();
-});
-
-// Artwork card click handlers
-document.querySelectorAll('.artwork-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const artworkId = card.dataset.artwork;
-    openLightbox(artworkId);
-  });
-});
-
-// Scroll fade-in animation
-const fadeElements = document.querySelectorAll('.artwork-card, .section-title, .section-subtitle, .about-content, .contact-content');
+// ==================
+// Scroll Fade-in Animation
+// ==================
+const fadeElements = document.querySelectorAll('.showcase-card, .section-title, .section-subtitle, .about-content, .contact-links');
 fadeElements.forEach(el => el.classList.add('fade-in'));
 
 const observer = new IntersectionObserver((entries) => {
@@ -155,7 +101,22 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
-// Obfuscated email (anti-scraper)
+// ==================
+// Parallax Hero
+// ==================
+const heroImg = document.querySelector('.hero-image img');
+if (heroImg) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    if (scrolled < window.innerHeight) {
+      heroImg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.1)`;
+    }
+  });
+}
+
+// ==================
+// Obfuscated Email
+// ==================
 const el = document.getElementById('emailLink');
 const et = document.getElementById('emailText');
 if (el && et) {
