@@ -1,0 +1,16 @@
+images/instagram/
+images/artist/
+images/other/
+ig_posts.json
+ig_categories.csv
+paintings_data.json
+cushions_data.json
+content.json
+todo.md
+2026-03-29-212229-check-shopsoodiart-i-want-to-cancel-this-shopify.txt
+.wrangler/
+node_modules/
+.git/
+.github/
+.gitignore
+.cfignore
