@@ -19,7 +19,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=soodi-arts
+          command: pages deploy . --project-name=soodi-arts --branch=master
 
       - name: Purge Cloudflare cache
         run: |
