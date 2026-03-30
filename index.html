@@ -169,34 +169,24 @@
     <div class="container">
       <h2 class="section-title">Get in Touch</h2>
       <p class="section-subtitle">Interested in a piece or a commission? I'd love to hear from you.</p>
-      <div class="contact-content">
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-        <div class="contact-info">
-          <div class="contact-social">
-            <a href="https://www.instagram.com/soodi.studio/" target="_blank" rel="noopener noreferrer" class="social-link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              <span>@soodi.studio</span>
-            </a>
-          </div>
-        </div>
+      <div class="contact-links">
+        <a href="#" class="contact-card" id="emailLink">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="M22 4L12 13L2 4"></path>
+          </svg>
+          <span class="contact-card-label">Email</span>
+          <span class="contact-card-value" id="emailText">loading...</span>
+        </a>
+        <a href="https://www.instagram.com/soodi.studio/" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span class="contact-card-label">Instagram</span>
+          <span class="contact-card-value">@soodi.studio</span>
+        </a>
       </div>
     </div>
   </section>

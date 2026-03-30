@@ -155,20 +155,12 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
-// Contact form (static - just show confirmation)
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.btn');
-  btn.textContent = 'Message Sent!';
-  btn.style.background = 'var(--color-accent)';
-  btn.style.color = 'white';
-  btn.style.borderColor = 'var(--color-accent)';
-  setTimeout(() => {
-    form.reset();
-    btn.textContent = 'Send Message';
-    btn.style.background = '';
-    btn.style.color = '';
-    btn.style.borderColor = '';
-  }, 3000);
-});
+// Obfuscated email (anti-scraper)
+const el = document.getElementById('emailLink');
+const et = document.getElementById('emailText');
+if (el && et) {
+  const u = 'info', d = 'soodi', t = 'art';
+  const addr = u + '@' + d + '.' + t;
+  et.textContent = addr;
+  el.href = 'mai' + 'lto:' + addr;
+}
